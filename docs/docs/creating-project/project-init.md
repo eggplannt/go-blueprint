@@ -69,8 +69,12 @@ Docker:
 ```bash
 go-blueprint create --advanced --feature docker
 ```
+Sqlc:
+```bash
+go-blueprint create --advanced --feature sqlc
+```
 
 Or all features at once:
 ```bash
-go-blueprint create --name my-project --framework chi --driver mysql --git commit --advanced --feature htmx --feature githubaction --feature websocket --feature tailwind --feature docker
+go-blueprint create --name my-project --framework chi --driver mysql --git commit --advanced --feature htmx --feature githubaction --feature websocket --feature tailwind --feature docker --feature sqlc
 ```
