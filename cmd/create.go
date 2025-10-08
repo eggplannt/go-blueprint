@@ -53,7 +53,7 @@ func init() {
 	createCmd.Flags().BoolP("advanced", "a", false, "Get prompts for advanced features")
 	createCmd.Flags().Var(&advancedFeatures, "feature", fmt.Sprintf("Advanced feature to use. Allowed values: %s", strings.Join(flags.AllowedAdvancedFeatures, ", ")))
 	createCmd.Flags().VarP(&flagGit, "git", "g", fmt.Sprintf("Git to use. Allowed values: %s", strings.Join(flags.AllowedGitsOptions, ", ")))
-	createCmd.Flags().VarP(&flagBuilder, "builder", "br", fmt.Sprintf("Builder to use. Allowed values: %s", strings.Join(flags.AllowedBuilders, ", ")))
+	createCmd.Flags().VarP(&flagBuilder, "builder", "b", fmt.Sprintf("Builder to use. Allowed values: %s", strings.Join(flags.AllowedBuilders, ", ")))
 
 	utils.RegisterStaticCompletions(createCmd, "framework", flags.AllowedProjectTypes)
 	utils.RegisterStaticCompletions(createCmd, "driver", flags.AllowedDBDrivers)
@@ -110,7 +110,7 @@ var createCmd = &cobra.Command{
 			Advanced: &multiSelect.Selection{
 				Choices: make(map[string]bool),
 			},
-			Git: &multiInput.Selection{},
+			Git:     &multiInput.Selection{},
 			Builder: &multiInput.Selection{},
 		}
 
@@ -120,10 +120,10 @@ var createCmd = &cobra.Command{
 			DBDriver:        flagDBDriver,
 			FrameworkMap:    make(map[flags.Framework]program.Framework),
 			DBDriverMap:     make(map[flags.Database]program.Driver),
-			BuilderMap:     make(map[flags.Builder]program.Builder),
+			BuilderMap:      make(map[flags.Builder]program.Builder),
 			AdvancedOptions: make(map[string]bool),
 			GitOptions:      flagGit,
-			Builder:	 flagBuilder,
+			Builder:         flagBuilder,
 		}
 
 		steps := steps.InitSteps(flagFramework, flagDBDriver)
